@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: RentCar Backend
+  liquibase:
+    enabled: false
+
+server:
+  port: 8080
