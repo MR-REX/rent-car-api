@@ -4,3 +4,10 @@ spring:
 
 server:
   port: 8080
+
+api:
+  constraints:
+    limits:
+      brands:
+        min-brands-per-page: 1
+        max-brands-per-page: 10

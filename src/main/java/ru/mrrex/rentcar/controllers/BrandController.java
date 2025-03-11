@@ -2,6 +2,7 @@ package ru.mrrex.rentcar.controllers;
 
 import java.util.List;
 import java.util.UUID;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,11 @@ import ru.mrrex.rentcar.services.BrandService;
 @RequiredArgsConstructor
 public class BrandController {
 
-    private static final int MAX_BRANDS_PER_PAGE = 10;
+    @Value("${api.constraints.limits.brands.min-brands-per-page:1}")
+    private int minBrandsPerPage;
+
+    @Value("${api.constraints.limits.brands.max-brands-per-page:10}")
+    private int maxBrandsPerPage;
 
     private final BrandService brandService;
     private final BrandMapper brandMapper;
@@ -33,12 +38,13 @@ public class BrandController {
         if (page < 0)
             throw new ApplicationError(HttpStatus.BAD_REQUEST, "Page number must be at least 0");
 
-        if (size < 1)
-            throw new ApplicationError(HttpStatus.BAD_REQUEST, "Page size must be at least 1");
-
-        if (size > MAX_BRANDS_PER_PAGE)
+        if (size < minBrandsPerPage)
             throw new ApplicationError(HttpStatus.BAD_REQUEST,
-                    "Size cannot exceed " + MAX_BRANDS_PER_PAGE);
+                    "Page size must be at least " + minBrandsPerPage);
+
+        if (size > maxBrandsPerPage)
+            throw new ApplicationError(HttpStatus.BAD_REQUEST,
+                    "Size cannot exceed " + maxBrandsPerPage);
 
         List<Brand> brands =
                 brandService.getBrands(page, size, "name", Sort.Direction.fromString(sort));
