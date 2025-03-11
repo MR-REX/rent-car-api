@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250311-3
+      author: MR.REX
+      changes:
+        - addColumn:
+            tableName: brands
+            columns:
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
