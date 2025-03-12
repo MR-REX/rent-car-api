@@ -5,3 +5,7 @@ databaseChangeLog:
       file: db/changelog/changes/002-added-random-brands.yaml
   - include:
       file: db/changelog/changes/003-added-time-columns-for-brands.yaml
+  - include:
+      file: db/changelog/changes/004-add-categories-table.yaml
+  - include:
+      file: db/changelog/changes/005-add-random-categories.yaml

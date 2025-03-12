@@ -1,0 +1,131 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250311-5
+      author: MR.REX
+      changes:
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: d6affb24-467d-48c7-b9a4-631380134716
+              - column:
+                  name: name
+                  value: Hatchback
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: 3ec20b7b-008c-4340-92a8-84e39693b7ac
+              - column:
+                  name: name
+                  value: Coupe
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: 83c927db-3c1b-4a9b-99cd-e1d26059e0b3
+              - column:
+                  name: name
+                  value: Station Wagon
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: c6caac9a-e449-42e2-bf74-144d70decf49
+              - column:
+                  name: name
+                  value: Micro Car
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: 172a035d-a157-4efe-9a86-4b5e4850f287
+              - column:
+                  name: name
+                  value: Pickup
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: cb84ddf8-7901-4ee8-a9f8-27da016d7a43
+              - column:
+                  name: name
+                  value: SUV
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: 35baf6d2-1191-43ff-b0e3-b92353cd2bb5
+              - column:
+                  name: name
+                  value: Convertible
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: 24f85f38-c681-4269-830c-f9532932a8f9
+              - column:
+                  name: name
+                  value: City Car
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: c0a3a6a7-1f69-4f90-8bc8-1f69f88d22eb
+              - column:
+                  name: name
+                  value: Vintage
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: c0d362d3-425e-43f0-a951-fe3b04804601
+              - column:
+                  name: name
+                  value: Sports
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: 3044754d-8f1b-4525-90c7-3e866896404d
+              - column:
+                  name: name
+                  value: Minivan
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: f146a24e-6af2-4cb7-b455-2da605e71fc8
+              - column:
+                  name: name
+                  value: Sedan
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: ebf37a54-e92f-44e8-aaa9-b02b6a106cdc
+              - column:
+                  name: name
+                  value: MPV
+        - insert:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: public_id
+                  value: 94aff969-8ed8-426f-8772-a863dc42c2d2
+              - column:
+                  name: name
+                  value: Grand Tourer

@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250311-4
+      author: MR.REX
+      changes:
+        - createTable:
+            tableName: car_categories
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: categoriesPK
+              - column:
+                  name: public_id
+                  type: UUID
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
