@@ -12,6 +12,7 @@ import ru.mrrex.rentcar.models.Car;
 public interface DetailedCarMapper {
 
     @Mapping(source = "publicId", target = "id")
+    @Mapping(source = "rentalPricePerDay", target = "rentalPricePerDay")
     DetailedCarResponseDto toDetailedCarResponseDto(Car car);
 
     List<DetailedCarResponseDto> toDetailedCarResponseDtoList(List<Car> cars);

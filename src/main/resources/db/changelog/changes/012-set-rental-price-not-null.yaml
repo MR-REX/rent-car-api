@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250313-3
+      author: MR.REX
+      changes:
+        - addNotNullConstraint:
+            tableName: cars
+            columnName: rental_price_per_day
+            columnDataType: DECIMAL(10, 2)

@@ -1,5 +1,6 @@
 package ru.mrrex.rentcar.models;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -54,6 +55,9 @@ public class Car {
         inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private List<Category> categories;
+
+    @Column(name = "rental_price_per_day", nullable = false, precision = 10, scale = 2)
+    private BigDecimal rentalPricePerDay;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

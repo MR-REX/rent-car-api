@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250313-2
+      author: MR.REX
+      changes:
+        - update:
+            tableName: cars
+            columns:
+              - column:
+                  name: rental_price_per_day
+                  valueComputed: FLOOR(50 + RAND() * 100)
+            where: rental_price_per_day IS NULL
