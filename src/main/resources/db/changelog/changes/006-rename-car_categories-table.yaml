@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250312-1
+      author: MR.REX
+      changes:
+        - renameTable:
+            oldTableName: car_categories
+            newTableName: categories

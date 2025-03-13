@@ -9,3 +9,11 @@ databaseChangeLog:
       file: db/changelog/changes/004-add-categories-table.yaml
   - include:
       file: db/changelog/changes/005-add-random-categories.yaml
+  - include:
+      file: db/changelog/changes/006-rename-car_categories-table.yaml
+  - include:
+      file: db/changelog/changes/007-change-id-type-for-brands.yaml
+  - include:
+      file: db/changelog/changes/008-add-cars-table.yaml
+  - include:
+      file: db/changelog/changes/009-add-random-catalog-cars.yaml

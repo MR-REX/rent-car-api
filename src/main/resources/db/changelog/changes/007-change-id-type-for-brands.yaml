@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250312-2
+      author: MR.REX
+      changes:
+        - modifyDataType:
+            tableName: brands
+            columnName: id
+            newDataType: INT

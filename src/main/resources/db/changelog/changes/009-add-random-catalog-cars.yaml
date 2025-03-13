@@ -1,0 +1,294 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250312-4
+      author: MR.REX
+      changes:
+        - insert:
+            tableName: cars
+            columns:
+              - column:
+                  name: public_id
+                  value: f47ac10b-58cc-4372-a567-0e02b2c3d479
+              - column:
+                  name: name
+                  value: Toyota Camry
+              - column:
+                  name: description
+                  value: Надежный седан среднего класса с комфортным салоном и экономичным двигателем.
+              - column:
+                  name: image_url
+                  value: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/2005-06_Toyota_Camry_XLE.jpg/1920px-2005-06_Toyota_Camry_XLE.jpg
+              - column: 
+                  name: brand_id
+                  value: '1'
+        - insert:
+            tableName: cars
+            columns:
+              - column:
+                  name: public_id
+                  value: 04c43e84-a637-4346-8166-6ea3efd7db6d
+              - column:
+                  name: name
+                  value: Toyota RAV4
+              - column:
+                  name: description
+                  value: Компактный внедорожник с просторным салоном и отличной проходимостью.
+              - column:
+                  name: image_url
+                  value: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Toyota_RAV4_HYBRID_Adventure_%286AA-AXAH54-ANXVB%29_front.jpg/1280px-Toyota_RAV4_HYBRID_Adventure_%286AA-AXAH54-ANXVB%29_front.jpg
+              - column: 
+                  name: brand_id
+                  value: '1'
+        - insert:
+            tableName: cars
+            columns:
+              - column:
+                  name: public_id
+                  value: bec552f7-85ae-40d3-b6da-036eecf44808
+              - column:
+                  name: name
+                  value: BMW X5
+              - column:
+                  name: description
+                  value: Роскошный внедорожник с передовыми технологиями и высоким уровнем комфорта.
+              - column:
+                  name: image_url
+                  value: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2013-2018_BMW_X5_%28F15%29_sDrive25d_wagon_%282018-09-17%29_01.jpg/1920px-2013-2018_BMW_X5_%28F15%29_sDrive25d_wagon_%282018-09-17%29_01.jpg
+              - column: 
+                  name: brand_id
+                  value: '7'
+        - insert:
+            tableName: cars
+            columns:
+              - column:
+                  name: public_id
+                  value: 75dca0f3-91bf-41dc-87b6-40c902ef4a59
+              - column:
+                  name: name
+                  value: Honda Civic
+              - column:
+                  name: description
+                  value: Надежный компактный автомобиль с современным дизайном.
+              - column:
+                  name: image_url
+                  value: https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Honda_Civic_Hybrid_%282022%2C_Europe%29_IAA_2023_1X7A0545_%282%29.jpg/1920px-Honda_Civic_Hybrid_%282022%2C_Europe%29_IAA_2023_1X7A0545_%282%29.jpg
+              - column: 
+                  name: brand_id
+                  value: '3'
+        - insert:
+            tableName: cars
+            columns:
+              - column:
+                  name: public_id
+                  value: dd2d55a5-acfa-420d-885a-45efcdf1a3c6
+              - column:
+                  name: name
+                  value: Ford Mustang
+              - column:
+                  name: description
+                  value: Легендарный спортивный автомобиль с мощным двигателем.
+              - column:
+                  name: image_url
+                  value: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/2018_Ford_Mustang_GT_5.0.jpg/800px-2018_Ford_Mustang_GT_5.0.jpg
+              - column: 
+                  name: brand_id
+                  value: '2'
+        - insert:
+            tableName: cars
+            columns:
+              - column:
+                  name: public_id
+                  value: bf5c7b13-6e6f-42fd-a92b-db18d0d683a7
+              - column:
+                  name: name
+                  value: Audi A4
+              - column:
+                  name: description
+                  value: Элегантный седан с превосходной управляемостью.
+              - column:
+                  name: image_url
+                  value: https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Audi_A4_Avant_B9_IMG_1973.jpg/1920px-Audi_A4_Avant_B9_IMG_1973.jpg
+              - column: 
+                  name: brand_id
+                  value: '8'
+        - insert:
+            tableName: cars
+            columns:
+              - column:
+                  name: public_id
+                  value: 4abf59e9-e29b-4585-a584-67e8bb464f6d
+              - column:
+                  name: name
+                  value: Tesla Model S
+              - column:
+                  name: description
+                  value: Электрический автомобиль с высокими характеристиками.
+              - column:
+                  name: image_url
+                  value: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/2021_Tesla_Model_S_P2_Long_Range_front_right_view.jpg/1280px-2021_Tesla_Model_S_P2_Long_Range_front_right_view.jpg
+              - column: 
+                  name: brand_id
+                  value: '24'
+        - insert:
+            tableName: cars
+            columns:
+              - column:
+                  name: public_id
+                  value: 8b56be06-fb92-4070-8841-3f70bcaefecb
+              - column:
+                  name: name
+                  value: Chevrolet Corvette
+              - column:
+                  name: description
+                  value: Спортивный автомобиль с уникальным дизайном.
+              - column:
+                  name: image_url
+                  value: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2021_Chevrolet_Corvette_C8.jpg/1920px-2021_Chevrolet_Corvette_C8.jpg
+              - column: 
+                  name: brand_id
+                  value: '18'
+        - insert:
+            tableName: cars
+            columns:
+              - column:
+                  name: public_id
+                  value: 6ef3b478-8691-4f87-b768-b7293eaed6c5
+              - column:
+                  name: name
+                  value: Volkswagen Golf
+              - column:
+                  name: description
+                  value: Компактный автомобиль с отличной управляемостью.
+              - column:
+                  name: image_url
+                  value: https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Volkswagen_Golf_VIII_GTE_1X7A6487.jpg/1920px-Volkswagen_Golf_VIII_GTE_1X7A6487.jpg
+              - column: 
+                  name: brand_id
+                  value: '16'
+        - insert:
+            tableName: cars
+            columns:
+              - column:
+                  name: public_id
+                  value: 915f0568-f1f1-494a-b899-09875f71ab48
+              - column:
+                  name: name
+                  value: Nissan Altima
+              - column:
+                  name: description
+                  value: Современный седан с комфортным салоном.
+              - column:
+                  name: image_url
+                  value: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/2023_Nissan_Altima_SR_in_Brilliant_Silver_Metallic%2C_front_right.jpg/1920px-2023_Nissan_Altima_SR_in_Brilliant_Silver_Metallic%2C_front_right.jpg
+              - column: 
+                  name: brand_id
+                  value: '5'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '1'
+              - column:
+                  name: category_id
+                  value: '8'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '2'
+              - column:
+                  name: category_id
+                  value: '8'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '3'
+              - column:
+                  name: category_id
+                  value: '8'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '4'
+              - column:
+                  name: category_id
+                  value: '8'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '5'
+              - column:
+                  name: category_id
+                  value: '3'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '6'
+              - column:
+                  name: category_id
+                  value: '5'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '7'
+              - column:
+                  name: category_id
+                  value: '1'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '8'
+              - column:
+                  name: category_id
+                  value: '2'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '9'
+              - column:
+                  name: category_id
+                  value: '3'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '10'
+              - column:
+                  name: category_id
+                  value: '3'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '10'
+              - column:
+                  name: category_id
+                  value: '4'
+        - insert:
+            tableName: car_category
+            columns:
+              - column:
+                  name: car_id
+                  value: '10'
+              - column:
+                  name: category_id
+                  value: '5'
+            
