@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250313-4
+      author: MR.REX
+      changes:
+        - addColumn:
+            tableName: cars
+            columns:
+              - column:
+                  name: available_for_rent
+                  type: INT
+                  defaultValue: "0"
+                  constraints:
+                    nullable: false

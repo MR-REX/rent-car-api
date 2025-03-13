@@ -14,4 +14,10 @@ public class DetailedCarResponseDto extends CarResponseDto {
 
     @JsonProperty("categories")
     private List<CategoryResponseDto> categories;
+
+    @JsonProperty("available_for_rent")
+    private Integer availableForRent;
+
+    @JsonProperty("colors")
+    private List<String> colors;
 }

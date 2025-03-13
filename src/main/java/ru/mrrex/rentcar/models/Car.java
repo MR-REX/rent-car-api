@@ -59,6 +59,9 @@ public class Car {
     @Column(name = "rental_price_per_day", nullable = false, precision = 10, scale = 2)
     private BigDecimal rentalPricePerDay;
 
+    @Column(name = "available_for_rent", nullable = false)
+    private Integer availableForRent;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
