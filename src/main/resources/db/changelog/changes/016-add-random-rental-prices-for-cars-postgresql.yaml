@@ -1,12 +1,13 @@
 databaseChangeLog:
   - changeSet:
-      id: 20250313-2
+      id: 20250313-7
       author: MR.REX
+      dbms: postgresql
       changes:
         - update:
             tableName: cars
             columns:
               - column:
                   name: rental_price_per_day
-                  valueComputed: FLOOR(50 + RAND() * 100)
+                  valueComputed: FLOOR(50 + RANDOM() * 100)
             where: rental_price_per_day IS NULL

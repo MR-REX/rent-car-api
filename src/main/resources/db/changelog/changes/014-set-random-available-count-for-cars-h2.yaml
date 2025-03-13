@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250313-5
+      author: MR.REX
+      dbms: h2
+      changes:
+        - update:
+            tableName: cars
+            where: "1=1"
+            columns:
+              - column:
+                  name: available_for_rent
+                  valueComputed: FLOOR(RAND() * 32)
