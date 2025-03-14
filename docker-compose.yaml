@@ -1,0 +1,47 @@
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  postgres:
+    image: bitnami/postgresql:17.4.0
+    container_name: rentcar_database
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgresql_data:/bitnami/postgresql'
+    environment:
+      POSTGRESQL_USERNAME: ${DATABASE_USER}
+      POSTGRESQL_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRESQL_DATABASE: ${DATABASE_NAME}
+    healthcheck:
+      test: pg_isready -U $$POSTGRESQL_USERNAME -d $$POSTGRESQL_DATABASE
+      interval: 10s
+      timeout: 5s
+      start_period: 10s
+      retries: 5
+  api:
+    image: rent-car-api:latest
+    build:
+      context: .
+    container_name: rentcar_api
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      SPRING_PROFILES_ACTIVE: production
+    healthcheck:
+      test: curl --fail --silent localhost:8080/actuator/health | grep UP || exit 1
+      interval: 20s
+      timeout: 5s
+      start_period: 40s
+      retries: 5
+
+volumes:
+  postgresql_data:
+    driver: local

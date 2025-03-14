@@ -1,6 +1,8 @@
 spring:
   application:
     name: Rent Car API
+  profiles:
+    default: dev
 
 server:
   port: 8080
