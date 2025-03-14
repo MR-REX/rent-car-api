@@ -1,8 +1,8 @@
 databaseChangeLog:
   - changeSet:
-      id: 20250313-5
+      id: 20250313-7
       author: MR.REX
-      dbms: h2
+      dbms: postgresql
       changes:
         - update:
             tableName: cars
@@ -10,4 +10,4 @@ databaseChangeLog:
             columns:
               - column:
                   name: available_for_rent
-                  valueComputed: FLOOR(RAND() * 32)
+                  valueComputed: FLOOR(RANDOM() * 32)

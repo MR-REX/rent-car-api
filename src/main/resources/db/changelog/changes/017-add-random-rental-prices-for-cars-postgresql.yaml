@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 20250313-7
+      id: 20250313-8
       author: MR.REX
       dbms: postgresql
       changes:
