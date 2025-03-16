@@ -2,6 +2,7 @@ package ru.mrrex.rentcar.controllers;
 
 import java.util.List;
 import java.util.UUID;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -16,8 +17,8 @@ import lombok.RequiredArgsConstructor;
 import ru.mrrex.rentcar.constants.PaginationConstants;
 import ru.mrrex.rentcar.dto.mappers.CarMapper;
 import ru.mrrex.rentcar.dto.mappers.CategoryMapper;
-import ru.mrrex.rentcar.dto.responses.CarResponseDto;
-import ru.mrrex.rentcar.dto.responses.CategoryResponseDto;
+import ru.mrrex.rentcar.dto.responses.CarResponse;
+import ru.mrrex.rentcar.dto.responses.CategoryResponse;
 import ru.mrrex.rentcar.exceptions.ApplicationError;
 import ru.mrrex.rentcar.models.Car;
 import ru.mrrex.rentcar.models.Category;
@@ -25,7 +26,7 @@ import ru.mrrex.rentcar.services.CarService;
 import ru.mrrex.rentcar.services.CategoryService;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
 public class CategoryController {
 
@@ -36,7 +37,7 @@ public class CategoryController {
     private final CarMapper carMapper;
 
     @GetMapping
-    public List<CategoryResponseDto> getCategories(
+    public List<CategoryResponse> getCategories(
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size",
                     defaultValue = ""
@@ -66,7 +67,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{publicId}")
-    public CategoryResponseDto getCategory(@PathVariable UUID publicId) {
+    public CategoryResponse getCategory(@PathVariable UUID publicId) {
         Category category = categoryService.getCategory(publicId).orElseThrow(
                 () -> new ApplicationError(HttpStatus.NOT_FOUND, "Category not found"));
 
@@ -74,11 +75,11 @@ public class CategoryController {
     }
 
     @GetMapping("/{publicId}/cars")
-    public List<CarResponseDto> getBrandCars(@PathVariable UUID publicId,
-            @RequestParam(name = "page", defaultValue = "0") int pageNumber,
-            @RequestParam(name = "size",
-                    defaultValue = "" + PaginationConstants.DEFAULT_CARS_PER_PAGE) int pageSize,
-            @RequestParam(name = "sort", defaultValue = "asc") String rawSortDirection) {
+    public List<CarResponse> getBrandCars(@PathVariable UUID publicId,
+                                             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
+                                             @RequestParam(name = "size",
+                                                     defaultValue = "" + PaginationConstants.DEFAULT_CARS_PER_PAGE) int pageSize,
+                                             @RequestParam(name = "sort", defaultValue = "asc") String rawSortDirection) {
         if (pageNumber < 0)
             throw new ApplicationError(HttpStatus.BAD_REQUEST, "Page number must be at least 0");
 
@@ -101,6 +102,6 @@ public class CategoryController {
                 .map(category -> carService.getCarsByCategory(category, pageable))
                 .orElseThrow(() -> new ApplicationError(HttpStatus.NOT_FOUND, "Category not found"));
 
-        return carMapper.toCarResponseDtoList(cars);
+        return carMapper.toCarResponseList(cars);
     }
 }

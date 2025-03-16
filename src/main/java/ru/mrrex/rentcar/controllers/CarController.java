@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import ru.mrrex.rentcar.constants.PaginationConstants;
 import ru.mrrex.rentcar.dto.mappers.DetailedCarMapper;
-import ru.mrrex.rentcar.dto.responses.DetailedCarResponseDto;
+import ru.mrrex.rentcar.dto.responses.DetailedCarResponse;
 import ru.mrrex.rentcar.exceptions.ApplicationError;
 import ru.mrrex.rentcar.models.Car;
 import ru.mrrex.rentcar.services.CarService;
 
 @RestController
-@RequestMapping("/cars")
+@RequestMapping("/api/v1/cars")
 @RequiredArgsConstructor
 public class CarController {
 
@@ -29,7 +29,7 @@ public class CarController {
     private final DetailedCarMapper detailedCarMapper;
 
     @GetMapping
-    public List<DetailedCarResponseDto> getCars(
+    public List<DetailedCarResponse> getCars(
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size",
                     defaultValue = "" + PaginationConstants.DEFAULT_CARS_PER_PAGE) int pageSize,
@@ -54,14 +54,14 @@ public class CarController {
 
         List<Car> cars = carService.getCars(pageable);
         
-        return detailedCarMapper.toDetailedCarResponseDtoList(cars);
+        return detailedCarMapper.toDetailedCarResponseList(cars);
     }
 
     @GetMapping("/{publicId}")
-    public DetailedCarResponseDto getCar(@PathVariable UUID publicId) {
+    public DetailedCarResponse getCar(@PathVariable UUID publicId) {
         Car car = carService.getCarByPublicId(publicId)
                 .orElseThrow(() -> new ApplicationError(HttpStatus.NOT_FOUND, "Car not found"));
 
-        return detailedCarMapper.toDetailedCarResponseDto(car);
+        return detailedCarMapper.toDetailedCarResponse(car);
     }
 }

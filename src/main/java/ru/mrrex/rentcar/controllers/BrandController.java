@@ -16,8 +16,8 @@ import lombok.RequiredArgsConstructor;
 import ru.mrrex.rentcar.constants.PaginationConstants;
 import ru.mrrex.rentcar.dto.mappers.BrandMapper;
 import ru.mrrex.rentcar.dto.mappers.CarMapper;
-import ru.mrrex.rentcar.dto.responses.BrandResponseDto;
-import ru.mrrex.rentcar.dto.responses.CarResponseDto;
+import ru.mrrex.rentcar.dto.responses.BrandResponse;
+import ru.mrrex.rentcar.dto.responses.CarResponse;
 import ru.mrrex.rentcar.exceptions.ApplicationError;
 import ru.mrrex.rentcar.models.Brand;
 import ru.mrrex.rentcar.models.Car;
@@ -25,7 +25,7 @@ import ru.mrrex.rentcar.services.BrandService;
 import ru.mrrex.rentcar.services.CarService;
 
 @RestController
-@RequestMapping("/brands")
+@RequestMapping("/api/v1/brands")
 @RequiredArgsConstructor
 public class BrandController {
 
@@ -36,7 +36,7 @@ public class BrandController {
     private final CarMapper carMapper;
 
     @GetMapping
-    public List<BrandResponseDto> getBrands(
+    public List<BrandResponse> getBrands(
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size",
                     defaultValue = "" + PaginationConstants.DEFAULT_BRANDS_PER_PAGE) int pageSize,
@@ -61,19 +61,19 @@ public class BrandController {
 
         List<Brand> brands = brandService.getBrands(pageable);
         
-        return brandMapper.toBrandResponseDtoList(brands);
+        return brandMapper.toBrandResponseList(brands);
     }
 
     @GetMapping("/{publicId}")
-    public BrandResponseDto getBrand(@PathVariable UUID publicId) {
+    public BrandResponse getBrand(@PathVariable UUID publicId) {
         Brand brand = brandService.getBrand(publicId)
                 .orElseThrow(() -> new ApplicationError(HttpStatus.NOT_FOUND, "Brand not found"));
 
-        return brandMapper.toBrandResponseDto(brand);
+        return brandMapper.toBrandResponse(brand);
     }
 
     @GetMapping("/{publicId}/cars")
-    public List<CarResponseDto> getBrandCars(@PathVariable UUID publicId,
+    public List<CarResponse> getBrandCars(@PathVariable UUID publicId,
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size",
                     defaultValue = "" + PaginationConstants.DEFAULT_CARS_PER_PAGE) int pageSize,
@@ -100,6 +100,6 @@ public class BrandController {
                 .map(brand -> carService.getCarsByBrand(brand, pageable))
                 .orElseThrow(() -> new ApplicationError(HttpStatus.NOT_FOUND, "Brand not found"));
 
-        return carMapper.toCarResponseDtoList(cars);
+        return carMapper.toCarResponseList(cars);
     }
 }

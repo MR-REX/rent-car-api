@@ -10,7 +10,7 @@ import ru.mrrex.rentcar.exceptions.ApplicationError;
 import ru.mrrex.rentcar.services.UserService;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/api/v1/account")
 @RequiredArgsConstructor
 public class AccountController {
 

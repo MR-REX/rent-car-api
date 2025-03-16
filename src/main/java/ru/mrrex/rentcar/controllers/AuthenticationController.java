@@ -16,7 +16,7 @@ import ru.mrrex.rentcar.exceptions.EntityValidationError;
 import ru.mrrex.rentcar.services.AuthenticationService;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
 
