@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import ru.mrrex.rentcar.constants.PaginationConstants;
+import ru.mrrex.rentcar.dto.mappers.CarMapper;
 import ru.mrrex.rentcar.dto.mappers.DetailedCarMapper;
+import ru.mrrex.rentcar.dto.responses.CarResponse;
 import ru.mrrex.rentcar.dto.responses.DetailedCarResponse;
 import ru.mrrex.rentcar.exceptions.ApplicationError;
 import ru.mrrex.rentcar.models.Car;
@@ -26,10 +28,12 @@ import ru.mrrex.rentcar.services.CarService;
 public class CarController {
 
     private final CarService carService;
+
+    private final CarMapper carMapper;
     private final DetailedCarMapper detailedCarMapper;
 
     @GetMapping
-    public List<DetailedCarResponse> getCars(
+    public List<CarResponse> getCars(
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size",
                     defaultValue = "" + PaginationConstants.DEFAULT_CARS_PER_PAGE) int pageSize,
@@ -54,7 +58,17 @@ public class CarController {
 
         List<Car> cars = carService.getCars(pageable);
         
-        return detailedCarMapper.toDetailedCarResponseList(cars);
+        return carMapper.toCarResponseList(cars);
+    }
+
+    @GetMapping("/popular")
+    public List<CarResponse> getPopularCars() {
+        Sort sort = Sort.by(Direction.ASC, "name");
+        Pageable pageable = PageRequest.of(0, 5, sort);
+
+        List<Car> cars = carService.getCars(pageable);
+
+        return carMapper.toCarResponseList(cars); 
     }
 
     @GetMapping("/{publicId}")
