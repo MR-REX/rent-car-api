@@ -20,6 +20,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import ru.mrrex.rentcar.constants.PaginationConstants;
 import ru.mrrex.rentcar.models.Brand;
 import ru.mrrex.rentcar.repositories.BrandRepository;
 
@@ -36,14 +37,14 @@ public class BrandServiceImplTests {
     public void testGetBrands() {
         List<Brand> brands = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < PaginationConstants.MAX_BRANDS_PER_PAGE; i++) {
             Brand brand = new Brand(i, UUID.randomUUID(), "Brand " + (i + 1), "url",
                     LocalDateTime.now(), LocalDateTime.now(), null);
 
             brands.add(brand);
         }
 
-        Pageable pageable = PageRequest.of(0, 10);
+        Pageable pageable = PageRequest.of(0, PaginationConstants.MAX_BRANDS_PER_PAGE);
         Page<Brand> brandPage = new PageImpl<>(brands, pageable, brands.size());
 
         when(brandRepository.findAll(pageable)).thenReturn(brandPage);
