@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import ru.mrrex.rentcar.constants.PaginationConstants;
 import ru.mrrex.rentcar.dto.mappers.CarMapper;
@@ -27,6 +31,8 @@ import ru.mrrex.rentcar.services.CategoryService;
 
 @RestController
 @RequestMapping("/api/v1/categories")
+@Tag(name = "Category Controller",
+        description = "Operations related to rental car categories")
 @RequiredArgsConstructor
 public class CategoryController {
 
@@ -37,6 +43,10 @@ public class CategoryController {
     private final CarMapper carMapper;
 
     @GetMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Get all categories", description = "Returns the list of all car categories")
+    @ApiResponse(responseCode = "200", description = "Categories list returned")
+    @ApiResponse(responseCode = "400", description = "Incorrect pagination or sorting")
     public List<CategoryResponse> getCategories(
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size",
@@ -67,6 +77,9 @@ public class CategoryController {
     }
 
     @GetMapping("/{publicId}")
+    @Operation(summary = "Get category by public id", description = "Returns the category by public id")
+    @ApiResponse(responseCode = "200", description = "Category returned")
+    @ApiResponse(responseCode = "404", description = "Category not found")
     public CategoryResponse getCategory(@PathVariable UUID publicId) {
         Category category = categoryService.getCategory(publicId).orElseThrow(
                 () -> new ApplicationError(HttpStatus.NOT_FOUND, "Category not found"));
@@ -75,6 +88,10 @@ public class CategoryController {
     }
 
     @GetMapping("/{publicId}/cars")
+    @Operation(summary = "Get cars by category", description = "Returns a list of cars of a specific category")
+    @ApiResponse(responseCode = "200", description = "List of cars returned")
+    @ApiResponse(responseCode = "400", description = "Incorrect pagination or sorting")
+    @ApiResponse(responseCode = "404", description = "Category not found")
     public List<CarResponse> getBrandCars(@PathVariable UUID publicId,
                                              @RequestParam(name = "page", defaultValue = "0") int pageNumber,
                                              @RequestParam(name = "size",

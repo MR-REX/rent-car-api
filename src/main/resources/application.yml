@@ -4,6 +4,9 @@ spring:
   profiles:
     default: dev
 
+springdoc:
+  show-actuator: true
+
 server:
   port: 8080
 

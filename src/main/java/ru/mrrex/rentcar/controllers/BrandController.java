@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import ru.mrrex.rentcar.constants.PaginationConstants;
 import ru.mrrex.rentcar.dto.mappers.BrandMapper;
@@ -26,6 +30,8 @@ import ru.mrrex.rentcar.services.CarService;
 
 @RestController
 @RequestMapping("/api/v1/brands")
+@Tag(name = "Brand Controller",
+        description = "Operations related to brands of rented cars")
 @RequiredArgsConstructor
 public class BrandController {
 
@@ -36,6 +42,10 @@ public class BrandController {
     private final CarMapper carMapper;
 
     @GetMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Get all brands", description = "Returns the list of all car brands")
+    @ApiResponse(responseCode = "200", description = "Brands list returned")
+    @ApiResponse(responseCode = "400", description = "Incorrect pagination or sorting")
     public List<BrandResponse> getBrands(
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size",
@@ -65,6 +75,9 @@ public class BrandController {
     }
 
     @GetMapping("/{publicId}")
+    @Operation(summary = "Get brand by public id", description = "Returns the car brand by public id")
+    @ApiResponse(responseCode = "200", description = "Car brand returned")
+    @ApiResponse(responseCode = "404", description = "Car brand not found")
     public BrandResponse getBrand(@PathVariable UUID publicId) {
         Brand brand = brandService.getBrand(publicId)
                 .orElseThrow(() -> new ApplicationError(HttpStatus.NOT_FOUND, "Brand not found"));
@@ -73,6 +86,10 @@ public class BrandController {
     }
 
     @GetMapping("/{publicId}/cars")
+    @Operation(summary = "Get cars of brand", description = "Returns a list of cars of a specific brand")
+    @ApiResponse(responseCode = "200", description = "List of cars returned")
+    @ApiResponse(responseCode = "400", description = "Incorrect pagination or sorting")
+    @ApiResponse(responseCode = "404", description = "Car brand not found")
     public List<CarResponse> getBrandCars(@PathVariable UUID publicId,
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size",
