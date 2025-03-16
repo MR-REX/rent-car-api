@@ -1,0 +1,131 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250316-2
+      author: MR.REX
+      changes:
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '1'
+              - column:
+                  name: color
+                  value: BLACK
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '1'
+              - column:
+                  name: color
+                  value: WHITE
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '2'
+              - column:
+                  name: color
+                  value: ORANGE
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '2'
+              - column:
+                  name: color
+                  value: RED
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '3'
+              - column:
+                  name: color
+                  value: BLACK
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '4'
+              - column:
+                  name: color
+                  value: WHITE
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '5'
+              - column:
+                  name: color
+                  value: BLACK
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '5'
+              - column:
+                  name: color
+                  value: WHITE
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '6'
+              - column:
+                  name: color
+                  value: GREY
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '6'
+              - column:
+                  name: color
+                  value: BLACK
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '7'
+              - column:
+                  name: color
+                  value: GREY
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '8'
+              - column:
+                  name: color
+                  value: WHITE
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '9'
+              - column:
+                  name: color
+                  value: WHITE
+        - insert:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  value: '10'
+              - column:
+                  name: color
+                  value: WHITE

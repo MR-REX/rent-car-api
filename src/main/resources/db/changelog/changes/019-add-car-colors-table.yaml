@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250316-1
+      author: MR.REX
+      changes:
+        - createTable:
+            tableName: car_colors
+            columns:
+              - column:
+                  name: car_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_car_colors_car
+                    references: cars(id)
+                    onDelete: CASCADE
+              - column:
+                  name: color
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            tableName: car_colors
+            columnNames: car_id, color
+            constraintName: pk_car_colors

@@ -4,8 +4,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,6 +23,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.mrrex.rentcar.enums.CarColor;
 
 @Entity
 @Table(name = "cars")
@@ -61,6 +66,12 @@ public class Car {
 
     @Column(name = "available_for_rent", nullable = false)
     private Integer availableForRent;
+
+    @ElementCollection(targetClass = CarColor.class)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "car_colors", joinColumns = @JoinColumn(name = "car_id"))
+    @Column(name = "color")
+    private List<CarColor> colors;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

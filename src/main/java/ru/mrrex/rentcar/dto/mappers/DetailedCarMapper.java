@@ -13,7 +13,6 @@ public interface DetailedCarMapper {
 
     @Mapping(source = "publicId", target = "id")
     @Mapping(source = "rentalPricePerDay", target = "rentalPricePerDay")
-    @Mapping(target = "colors", ignore = true)
     DetailedCarResponse toDetailedCarResponse(Car car);
 
     List<DetailedCarResponse> toDetailedCarResponseList(List<Car> cars);
