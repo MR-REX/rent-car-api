@@ -5,7 +5,7 @@ WORKDIR /build
 COPY src src
 COPY pom.xml pom.xml
 
-RUN --mount=type=cache,target=/root/.m2 mvn clean package dependency:copy-dependencies -DincludeScope=runtime -DskipTests
+RUN --mount=type=cache,target=/root/.m2 mvn clean package dependency:copy-dependencies -DincludeScope=runtime
 
 FROM eclipse-temurin:17-jre-alpine-3.21
 
