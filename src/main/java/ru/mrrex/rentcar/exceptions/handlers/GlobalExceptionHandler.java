@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import lombok.extern.slf4j.Slf4j;
 import ru.mrrex.rentcar.dto.responses.EntityValidationErrorResponse;
-import ru.mrrex.rentcar.dto.responses.ErrorResponseDto;
+import ru.mrrex.rentcar.dto.responses.ErrorResponse;
 import ru.mrrex.rentcar.exceptions.ApplicationError;
 import ru.mrrex.rentcar.exceptions.EntityValidationError;
 
@@ -16,10 +16,10 @@ import ru.mrrex.rentcar.exceptions.EntityValidationError;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ApplicationError.class)
-    public ResponseEntity<ErrorResponseDto> catchApplicationError(ApplicationError error) {
+    public ResponseEntity<ErrorResponse> catchApplicationError(ApplicationError error) {
         log.error(error.getMessage(), error);
 
-        ErrorResponseDto errorResponse = new ErrorResponseDto();
+        ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setStatusCode(error.getStatusCode().value());
         errorResponse.setMessage(error.getMessage());
         errorResponse.setTimestamp(error.getCreatedAt());
@@ -28,11 +28,11 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity<ErrorResponseDto> catchArgumentTypeMismatchException(
+    public ResponseEntity<ErrorResponse> catchArgumentTypeMismatchException(
             MethodArgumentTypeMismatchException exception) {
         log.warn(exception.getMessage());
 
-        ErrorResponseDto errorResponse = new ErrorResponseDto();
+        ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setStatusCode(HttpStatus.BAD_REQUEST.value());
         errorResponse.setMessage(exception.getMessage());
 

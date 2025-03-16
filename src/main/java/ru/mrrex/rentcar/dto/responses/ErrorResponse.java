@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class ErrorResponseDto {
+public class ErrorResponse {
 
     @JsonProperty("status_code")
     private int statusCode;
@@ -15,7 +15,7 @@ public class ErrorResponseDto {
     @JsonProperty("timestamp")
     private Long timestamp;
 
-    public ErrorResponseDto() {
+    public ErrorResponse() {
         this.timestamp = System.currentTimeMillis();
     }
 }

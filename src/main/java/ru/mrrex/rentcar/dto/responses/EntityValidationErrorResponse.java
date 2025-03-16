@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class EntityValidationErrorResponse extends ErrorResponseDto {
+public class EntityValidationErrorResponse extends ErrorResponse {
 
     @JsonProperty("field_errors")
     private Map<String, String> fieldErrors;

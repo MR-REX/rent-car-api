@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CategoryResponseDto {
+public class CategoryResponse {
 
     @JsonProperty("id")
     private UUID id;

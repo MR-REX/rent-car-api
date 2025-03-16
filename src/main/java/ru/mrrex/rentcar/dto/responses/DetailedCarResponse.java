@@ -7,13 +7,13 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class DetailedCarResponseDto extends CarResponseDto {
+public class DetailedCarResponse extends CarResponse {
 
     @JsonProperty("brand")
-    private BrandResponseDto brand;
+    private BrandResponse brand;
 
     @JsonProperty("categories")
-    private List<CategoryResponseDto> categories;
+    private List<CategoryResponse> categories;
 
     @JsonProperty("available_for_rent")
     private Integer availableForRent;
